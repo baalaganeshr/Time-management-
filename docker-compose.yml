@@ -1,0 +1,45 @@
+services:
+  database:
+    image: mysql:8.0
+    container_name: kimai_db
+    environment:
+      MYSQL_DATABASE: kimai
+      MYSQL_USER: kimai
+      MYSQL_PASSWORD: kimai_password
+      MYSQL_ROOT_PASSWORD: root_password
+    volumes:
+      - kimai_db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - kimai_network
+    restart: unless-stopped
+
+  kimai:
+    image: kimai/kimai2:apache
+    container_name: kimai_app
+    environment:
+      DATABASE_URL: mysql://kimai:kimai_password@database:3306/kimai?charset=utf8mb4&serverVersion=8.0
+      APP_SECRET: this_is_a_secret_change_this_in_production
+      TRUSTED_HOSTS: localhost,127.0.0.1,localhost:8001,172.21.0.1
+      MAILER_FROM: admin@localhost
+      MAILER_URL: null://null
+    ports:
+      - "8001:8001"
+    volumes:
+      - kimai_var:/opt/kimai/var
+      - kimai_public:/opt/kimai/public
+    depends_on:
+      - database
+    networks:
+      - kimai_network
+    restart: unless-stopped
+
+volumes:
+  kimai_db_data:
+  kimai_var:
+  kimai_public:
+
+networks:
+  kimai_network:
+    driver: bridge

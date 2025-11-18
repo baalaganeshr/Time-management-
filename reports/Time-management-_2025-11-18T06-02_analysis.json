@@ -1,0 +1,26 @@
+{
+  "repository": "C:\\Users\\baala\\OneDrive\\Desktop\\g\\Time-management-",
+  "totalCommits": 1,
+  "totalHours": 0.5,
+  "sessions": [
+    {
+      "start": "2025-11-18T05:57:31.000Z",
+      "end": "2025-11-18T05:57:31.000Z",
+      "commits": [
+        {
+          "hash": "350967d",
+          "author": "R.Baala Ganesh",
+          "email": "baalaganeshofficial@gmail.com",
+          "date": "2025-11-18T05:57:31.000Z",
+          "message": "Initial commit"
+        }
+      ],
+      "author": "R.Baala Ganesh",
+      "email": "baalaganeshofficial@gmail.com",
+      "duration": 30,
+      "hours": 0.5,
+      "commitCount": 1,
+      "description": "Initial commit"
+    }
+  ]
+}
